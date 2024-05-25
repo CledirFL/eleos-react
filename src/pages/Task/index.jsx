@@ -1,6 +1,6 @@
 import {
-    Accordion, AccordionDetails, AccordionSummary, Box, Button, Card,
-    CardActions, CardContent, Container, Grid, List, ListItem,
+    Accordion, AccordionDetails, AccordionSummary, Alert, Box, Button, Card,
+    CardActions, CardContent, CircularProgress, Container, Grid, List, ListItem,
     ListItemText, TextField, Typography
 } from '@mui/material'
 import React, { useState } from 'react'
@@ -10,6 +10,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import { useForm } from 'react-hook-form';
 import { LoadingButton } from '@mui/lab';
+
 import { initialRows } from '../../utils';
 import FullFeaturedCrudGrid from '../../components/DataGrid'
 
@@ -18,6 +19,8 @@ export default function Task() {
     const [tasks, setTasks] = useState(initialRows);
     const [isLoading, setLoading] = useState(false);
     const [task, setTask] = useState(null);
+    const [isCreatedSuccessfully, setCreatedSuccess] = useState(false);
+    const [isUpdateSuccessfully, setUpdateSuccess] = useState(false);
 
     const {
         register,
@@ -42,6 +45,7 @@ export default function Task() {
 
     function handleEditClickSubmit(data) {
         setLoading(true)
+        setUpdateSuccess(false)
         let getTask = task;
         getTask.name = data.name;
         getTask.description = data.description;
@@ -49,11 +53,15 @@ export default function Task() {
             setTasks(tasks.map((item) => (item.id === getTask.id ? getTask : item)));
             setLoading(false)
             setTask(null)
+            setUpdateSuccess(true)
             reset({
                 name: '',
                 description: '',
             })
-        }, 1000)
+            setTimeout(() => {
+                setUpdateSuccess(false)
+            }, 1000);
+        }, 500)
 
 
 
@@ -65,6 +73,7 @@ export default function Task() {
 
     function handleCreateTask(dataForm) {
         setLoading(true)
+        setCreatedSuccess(false)
         let data = {
             id: tasks.length + 1,
             ...dataForm
@@ -73,11 +82,16 @@ export default function Task() {
 
             setTasks([...tasks, data,])
             setLoading(false)
+            setCreatedSuccess(true)
             reset({
                 name: '',
                 description: '',
             })
-        }, 1000)
+            setTimeout(() => {
+                setCreatedSuccess(false)
+            }, 1000);
+        }, 500)
+
     }
 
     function handleCancel() {
@@ -117,7 +131,7 @@ export default function Task() {
                         icon={<DeleteIcon />}
                         label="Delete"
                         onClick={() => handleDeleteClick(id)}
-                        color="inherit"
+                        color="error"
                     />,
                 ];
             },
@@ -183,7 +197,12 @@ export default function Task() {
                                     id="description"
                                     required
                                 />
-
+                                {isCreatedSuccessfully && <Alert style={{ marginTop: 10 }} severity="success">
+                                    Task was created successfully.
+                                </Alert>}
+                                {isUpdateSuccessfully && <Alert style={{ marginTop: 10 }} severity="success">
+                                    Task was updated successfully.
+                                </Alert>}
                             </CardContent>
                             <CardActions style={{ padding: 20 }}>
                                 <Button size="small" onClick={handleCancel}>cancel </Button>
@@ -192,11 +211,10 @@ export default function Task() {
                                     onClick={task ? handleSubmit((data) => handleEditClickSubmit(data)) : handleSubmit((data) => handleCreateTask(data))}
                                     loading={isLoading}
                                     variant="outlined"
-
+                                    loadingIndicator={<CircularProgress color="primary" size={16} />}
                                 >
                                     <span>{task ? "Salvar" : "Submit"}</span>
                                 </LoadingButton>
-                                {/* <Button size="small" type='submit' onClick={handleSubmit((data) => console.log({ data }))}>Submit</Button> */}
                             </CardActions>
                         </Card>
 
