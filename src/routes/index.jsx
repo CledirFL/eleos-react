@@ -3,6 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom'
 import Task from '../pages/Task'
 import User from '../pages/User'
 import Home from '../pages/Home'
+import ShowUser from '../pages/User/Show'
 
 function NoMatch() {
     return (
@@ -20,7 +21,10 @@ function Router() {
         <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/task" element={<Task />} />
-            <Route path="/user" element={<User />} />
+            <Route path="/user" exact element={<User />} />
+            <Route
+                path="/user/:id"
+                element={<ShowUser />} />
             <Route path="*" element={<NoMatch />} />
         </Routes>
     )
