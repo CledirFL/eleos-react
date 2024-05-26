@@ -68,7 +68,7 @@ export default function Task() {
     }
 
     function handleDeleteClick(id) {
-        setTasks(tasks.filter((_, index) => index !== id));
+        setTasks(tasks.filter((_) => _.id !== id));
     }
 
     function handleCreateTask(dataForm) {
@@ -172,7 +172,7 @@ export default function Task() {
                             </AccordionDetails>
                         </Accordion>
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={12} md={4} lg={5}>
                         <Card>
                             <CardContent style={{ padding: 20 }}>
                                 <Typography variant='h3' color="text.secondary" gutterBottom>
@@ -219,7 +219,7 @@ export default function Task() {
                         </Card>
 
                     </Grid>
-                    <Grid item xs={7}>
+                    <Grid item xs={12} md={8} lg={7}>
                         <Card>
                             <CardContent style={{ padding: 20 }}>
                                 <Typography variant='h3' color="text.secondary" gutterBottom>
