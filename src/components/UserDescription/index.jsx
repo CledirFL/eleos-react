@@ -2,7 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Grid, List, ListItem, Li
 import React from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export default function UserDescriptionTask() {
+export default function UserDescription() {
     return (
         <Grid style={{ marginTop: '2%' }} item xs={12} md={12} lg={12} xl={12}>
             <Accordion>

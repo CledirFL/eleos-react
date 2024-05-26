@@ -1,10 +1,10 @@
-import { Accordion, AccordionDetails, AccordionSummary, Avatar, Card, CardContent, Container, Grid, IconButton, List, ListItem, ListItemText, Typography } from '@mui/material'
+import { Avatar, Card, CardContent, Container, Grid, IconButton, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import SeesIcon from "@mui/icons-material/Visibility";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DataGrid } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router';
-import { ArrowBack } from '@mui/icons-material';
+import GoBack from '../../components/GoBack';
+import UserDescription from '../../components/UserDescription';
 
 
 export default function User() {
@@ -69,41 +69,9 @@ export default function User() {
 
     return (
         <Container>
-            <Grid container spacing={2}>
-                <Grid style={{ marginTop: '3%' }} container justifyItems='flex-start' item xs={12} sm={12} md={12} lg={12} xl={12} >
-                    <IconButton onClick={() => navigate('/')} size="large" aria-label="delete" style={{ backgroundColor: '#3e3b47' }}>
-                        <ArrowBack />
-                    </IconButton>
-                </Grid>
-                <Grid style={{ marginTop: '2%' }} item xs={12} md={12} lg={12} xl={12}>
-                    <Accordion>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon color='primary' />}
-                            aria-controls="panel1-content"
-                            id="panel1-header"
-                        >
-                            <Typography variant="h4" gutterBottom component="div" sx={{ fontWeight: 'bold' }}>
-                                User page
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <List component="ul">
-                                <ListItem>
-                                    <ListItemText
-                                        primary="Accessing /users should display all users that come in the response to this API call
-                                        https://dummyjson.com/users" />
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText
-                                        primary="Click on a single user should take you to /users/:id and display the information about
-                                            the user. Refreshing the page while on the /users/:id should still display the
-                                            information about the user (API call to get a single user:
-                                            https://dummyjson.com/users/[userId])" />
-                                </ListItem>
-                            </List>
-                        </AccordionDetails>
-                    </Accordion>
-                </Grid>
+            <Grid container spacing={2} style={{ marginTop: '3%' }}>
+                <GoBack />
+                <UserDescription />
                 <Grid item xs={12} md={12} lg={12} xl={12}>
                     <Card>
                         <CardContent>
