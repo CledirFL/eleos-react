@@ -35,7 +35,6 @@ const theme = createTheme({
 function App() {
   return (
     <div className="App">
-      {/* <h1>App</h1> */}
       <ThemeProvider theme={theme}>
         <Router />
       </ThemeProvider>
