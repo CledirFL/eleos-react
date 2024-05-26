@@ -74,6 +74,6 @@ To navigate to other pages
 
 
 ### Deployment
-
-- [eleos-kelton](https://)
+Link to app 
+- [eleos](https://eleos-react.vercel.app/)
 

@@ -14,6 +14,15 @@ const Home = () => {
                 <Button variant="contained" color="secondary" component={Link} to="/task" style={{ margin: '10px' }}>
                     Go to Task Page
                 </Button>
+                <Typography style={{ marginTop: '20%' }} variant='h6' color='white'>
+                    Made by <strong> Kelton Cabral</strong>
+                </Typography>
+                <Typography variant='p' color='white' component='a' href='https://github.com/CledirFL' target='blank'>
+                    GitHub
+                </Typography>
+                <Typography variant='p' color='white' component='a' href='https://www.linkedin.com/in/kelton-cabral-cv/' target='blank'>
+                    LinkedIn
+                </Typography>
             </Box>
         </Container>
     );
