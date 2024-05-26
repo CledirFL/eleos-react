@@ -1,21 +1,18 @@
 import {
-    Accordion, AccordionDetails, AccordionSummary, Alert, Box, Button, Card,
-    CardActions, CardContent, CircularProgress, Container, Grid, IconButton, List, ListItem,
-    ListItemText, TextField, Typography
+    Alert, Box, Button, Card,
+    CardActions, CardContent, CircularProgress, Container, Grid,
+    TextField, Typography
 } from '@mui/material'
 import React, { useState } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import { ArrowBack } from '@mui/icons-material'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import { useForm } from 'react-hook-form';
 import { LoadingButton } from '@mui/lab';
 
 import { initialRows } from '../../utils';
-import FullFeaturedCrudGrid from '../../components/DataGrid'
-import { useNavigate } from 'react-router';
 import GoBack from '../../components/GoBack';
+import TaskDescription from '../../components/TaskDescription';
 
 
 export default function Task() {
@@ -24,7 +21,6 @@ export default function Task() {
     const [task, setTask] = useState(null);
     const [isCreatedSuccessfully, setCreatedSuccess] = useState(false);
     const [isUpdateSuccessfully, setUpdateSuccess] = useState(false);
-    const navigate = useNavigate()
 
     const {
         register,
@@ -147,36 +143,7 @@ export default function Task() {
             <Box sx={{ flexGrow: 1, marginTop: '3%' }}>
                 <Grid container spacing={2}>
                     <GoBack />
-                    <Grid item xs={12} md={12} lg={12} xl={12}>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon color='primary' />}
-                                aria-controls="panel1-content"
-                                id="panel1-header"
-                            >
-                                <Typography variant="h4" gutterBottom component="div" sx={{ fontWeight: 'bold' }}>
-                                    Tasks page
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <List component="ul">
-                                    <ListItem>
-                                        <ListItemText primary="A form to create tasks" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="A list to display the tasks created" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="You should be able to create/edit/remove tasks" />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="It should be responsive (mobile/desktop). Up to you how to display it in those view
-                            ports" />
-                                    </ListItem>
-                                </List>
-                            </AccordionDetails>
-                        </Accordion>
-                    </Grid>
+                    <TaskDescription />
                     <Grid item xs={12} md={4} lg={5}>
                         <Card>
                             <CardContent style={{ padding: 20 }}>
@@ -257,9 +224,9 @@ export default function Task() {
                 </Grid>
             </Box>
 
-            <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" sx={{ height: '100vh' }} >
+            {/* <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" sx={{ height: '100vh' }} >
                 <FullFeaturedCrudGrid />
-            </Box>
+            </Box> */}
         </Container >
     )
 }
