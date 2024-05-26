@@ -4,12 +4,12 @@ import SeesIcon from "@mui/icons-material/Visibility";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DataGrid } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router';
+import { ArrowBack } from '@mui/icons-material';
 
 
 export default function User() {
     const [users, setUsers] = useState([]);
     const [isLoading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,17 +19,14 @@ export default function User() {
 
     async function fetchUser() {
         setLoading(true)
-        setError(false);
         try {
             let response = await fetch('https://dummyjson.com/users')
             let data = await response.json();
             setUsers(data.users)
             setLoading(false)
 
-            console.log({ data })
         } catch (e) {
             setLoading(false)
-            setError(true);
             console.log('Error in fetch users: ' + e)
         }
 
@@ -73,7 +70,12 @@ export default function User() {
     return (
         <Container>
             <Grid container spacing={2}>
-                <Grid style={{ marginTop: '3%' }} item xs={12} md={12} lg={12} xl={12}>
+                <Grid style={{ marginTop: '3%' }} container justifyItems='flex-start' item xs={12} sm={12} md={12} lg={12} xl={12} >
+                    <IconButton onClick={() => navigate('/')} size="large" aria-label="delete" style={{ backgroundColor: '#3e3b47' }}>
+                        <ArrowBack />
+                    </IconButton>
+                </Grid>
+                <Grid style={{ marginTop: '2%' }} item xs={12} md={12} lg={12} xl={12}>
                     <Accordion>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon color='primary' />}
@@ -109,10 +111,7 @@ export default function User() {
                                 loading={isLoading}
                                 autoHeight
                                 rows={users}
-                                columns={columns}
-                            // hideFooterRowCount={false}
-                            // onError={(erro) => console.log("error on grid", erro)}
-                            />
+                                columns={columns} />
                         </CardContent>
                     </Card>
                 </Grid>

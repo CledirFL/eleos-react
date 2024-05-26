@@ -1,11 +1,12 @@
 import {
     Accordion, AccordionDetails, AccordionSummary, Alert, Box, Button, Card,
-    CardActions, CardContent, CircularProgress, Container, Grid, List, ListItem,
+    CardActions, CardContent, CircularProgress, Container, Grid, IconButton, List, ListItem,
     ListItemText, TextField, Typography
 } from '@mui/material'
 import React, { useState } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import { ArrowBack } from '@mui/icons-material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import { useForm } from 'react-hook-form';
@@ -13,6 +14,7 @@ import { LoadingButton } from '@mui/lab';
 
 import { initialRows } from '../../utils';
 import FullFeaturedCrudGrid from '../../components/DataGrid'
+import { useNavigate } from 'react-router';
 
 
 export default function Task() {
@@ -21,6 +23,7 @@ export default function Task() {
     const [task, setTask] = useState(null);
     const [isCreatedSuccessfully, setCreatedSuccess] = useState(false);
     const [isUpdateSuccessfully, setUpdateSuccess] = useState(false);
+    const navigate = useNavigate()
 
     const {
         register,
@@ -142,6 +145,11 @@ export default function Task() {
         <Container maxWidth="lg"  >
             <Box sx={{ flexGrow: 1, marginTop: '3%' }}>
                 <Grid container spacing={2}>
+                    <Grid container justifyItems='flex-start' item xs={12} sm={12} md={12} lg={12} xl={12} >
+                        <IconButton onClick={() => navigate('/')} size="large" aria-label="delete" style={{ backgroundColor: '#3e3b47' }}>
+                            <ArrowBack />
+                        </IconButton>
+                    </Grid>
                     <Grid item xs={12} md={12} lg={12} xl={12}>
                         <Accordion>
                             <AccordionSummary
