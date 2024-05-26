@@ -15,6 +15,7 @@ import { LoadingButton } from '@mui/lab';
 import { initialRows } from '../../utils';
 import FullFeaturedCrudGrid from '../../components/DataGrid'
 import { useNavigate } from 'react-router';
+import GoBack from '../../components/GoBack';
 
 
 export default function Task() {
@@ -145,11 +146,7 @@ export default function Task() {
         <Container maxWidth="lg"  >
             <Box sx={{ flexGrow: 1, marginTop: '3%' }}>
                 <Grid container spacing={2}>
-                    <Grid container justifyItems='flex-start' item xs={12} sm={12} md={12} lg={12} xl={12} >
-                        <IconButton onClick={() => navigate('/')} size="large" aria-label="delete" style={{ backgroundColor: '#3e3b47' }}>
-                            <ArrowBack />
-                        </IconButton>
-                    </Grid>
+                    <GoBack />
                     <Grid item xs={12} md={12} lg={12} xl={12}>
                         <Accordion>
                             <AccordionSummary
