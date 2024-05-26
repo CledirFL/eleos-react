@@ -4,6 +4,7 @@ import Task from '../pages/Task'
 import User from '../pages/User'
 import Home from '../pages/Home'
 import ShowUser from '../pages/User/Show'
+import Page from '../page'
 
 function NoMatch() {
     return (
@@ -19,13 +20,25 @@ function NoMatch() {
 function Router() {
     return (
         <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/task" element={<Task />} />
-            <Route path="/user" exact element={<User />} />
-            <Route
-                path="/user/:id"
-                element={<ShowUser />} />
-            <Route path="*" element={<NoMatch />} />
+            <Route element={<Page title="Eleo " />}>
+                <Route path="/" exact element={<Home />} />
+            </Route>
+
+            <Route element={<Page title="Eleo - Task" />}>
+                <Route path="/task" element={<Task />} />
+            </Route>
+            <Route element={<Page title="Eleo - User" />}>
+                <Route path="/user" exact element={<User />} />
+            </Route>
+            <Route element={<Page title="Eleo - User Details" />}>
+                <Route
+                    path="/user/:id"
+                    element={<ShowUser />} />
+            </Route>
+            <Route element={<Page title="Eleo - Not found" />}>
+                <Route path="*" element={<NoMatch />} />
+
+            </Route>
         </Routes>
     )
 }
