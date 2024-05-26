@@ -14,57 +14,66 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `Description of challenge`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`Eleos: Frontend developer exercise`
 
-### `npm run build`
+Create an application using minimum the following technologies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ReactJS: you can use something like create-react-app to skip all the boilerplate
+- React-router
+- Forms: react-hook-forms
+- UI: MaterialUI
+- Follow good practices, clean code, modularity and reusability
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`Tasks page`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- A form to create tasks
+- A list to display the tasks created
+- You should be able to create/edit/remove tasks
+- It should be responsive (mobile/desktop). Up to you how to display it in those view
+ports
 
-### `npm run eject`
+`Users page`
+- Accessing /users should display all users that come in the response to this API call
+https://dummyjson.com/users
+- Click on a single user should take you to /users/:id and display the information about
+the user. 
+- Refreshing the page while on the /users/:id should still display the
+information about the user (API call to get a single user:
+https://dummyjson.com/users/[userId])
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The UI is free for you to choose what’s best to display and how to display it
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Result
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`Home Page`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To navigate to other pages
+<p align="center">
+   <img alt="project copa web"  src=".github/home.png">
+</p>
 
-## Learn More
+`Task Page`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="center">
+   <img alt="project copa web"  src=".github/task.png">
+</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`User Page`
 
-### Code Splitting
+<p align="center">
+   <img alt="project copa web"  src=".github/User.png">
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`User details Page`
 
-### Analyzing the Bundle Size
+<p align="center">
+   <img alt="project copa web"  src=".github/show.png">
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- [eleos-kelton](https://)
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
