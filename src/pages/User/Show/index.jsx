@@ -1,4 +1,4 @@
-import { Avatar, Breadcrumbs, Card, CardContent, CircularProgress, Container, Grid, List, ListItem, ListItemText, Link as MLink, Paper, Typography } from '@mui/material'
+import { Breadcrumbs, Card, CardContent, CircularProgress, Container, Link as MLink, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import UserProfile from '../../../components/UserProfile';
@@ -55,8 +55,8 @@ export default function ShowUser() {
                             Show User
                         </Typography>
                     </div>
-
-                    {user ? <UserProfile user={user} /> : <CircularProgress />}
+                    {isLoading && !user && <CircularProgress />}
+                    {!isLoading && user && <UserProfile user={user} />}
 
                 </CardContent>
             </Card>
