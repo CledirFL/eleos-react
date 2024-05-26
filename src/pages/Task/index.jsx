@@ -145,7 +145,7 @@ export default function Task() {
                     <Grid item xs={12} md={12} lg={12} xl={12}>
                         <Accordion>
                             <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
+                                expandIcon={<ExpandMoreIcon color='primary' />}
                                 aria-controls="panel1-content"
                                 id="panel1-header"
                             >
@@ -179,22 +179,23 @@ export default function Task() {
                                     Add task
                                 </Typography>
                                 <TextField
-                                    error={errors.name?.type === 'required'}
-                                    {...register('name', { required: true })}
+                                    error={!!errors.name}
+                                    {...register('name', { required: "This field is required", })}
                                     style={{ marginBottom: 10, marginTop: 20 }}
                                     fullWidth label="Name" id="name"
-                                    // helperText="name is required."
+                                    helperText={errors.name?.message}
                                     required
                                 />
                                 <TextField
-                                    {...register('description', { required: true })}
-                                    error={errors.description?.type === 'required'}
+                                    {...register('description', { required: "This field is required", })}
+                                    error={!!errors.description}
                                     multiline
                                     maxRows={4}
                                     minRows={2}
                                     fullWidth
                                     label="Description"
                                     id="description"
+                                    helperText={errors.description?.message}
                                     required
                                 />
                                 {isCreatedSuccessfully && <Alert style={{ marginTop: 10 }} severity="success">
